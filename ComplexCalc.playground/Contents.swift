@@ -4,6 +4,47 @@ print("Welcome back to the UW Calculator")
 // below both compile and return "true"
 class Calculator {
     
+    func add(lhs: Int, rhs: Int) -> Int {
+          return lhs + rhs
+    }
+    func subtract(lhs: Int, rhs: Int) -> Int {
+          return lhs - rhs
+    }
+    func multiply(lhs: Int, rhs: Int) -> Int {
+          return lhs * rhs
+    }
+    func divide(lhs: Int, rhs: Int) -> Int {
+          return lhs / rhs
+    }
+    
+    func add(_ args: [Int]) -> Int {
+        var sum = 0
+        for elem in args {
+            sum += elem
+        }
+        return sum
+    }
+    func multiply(_ args: [Int]) -> Int {
+        var res = 1
+        for elem in args {
+            res *= elem
+        }
+        return res
+    }
+    func count(_ args: [Int]) -> Int {
+        var counter = 0
+        for _ in args {
+            counter += 1
+        }
+        return counter
+    }
+    func avg(_ args: [Int]) -> Int {
+        var sum = 0
+        for elem in args {
+            sum += elem
+        }
+        return sum / args.count
+    }
 }
 
 let calc = Calculator()  // Don't change this declaration name; it's used in all the tests below
@@ -17,7 +58,7 @@ calc.subtract(lhs: 2, rhs: 2) == 0
 calc.multiply(lhs: 2, rhs: 2) == 4
 calc.divide(lhs: 2, rhs: 2) == 1
 
-calc.mathOp(lhs: 5, rhs: 5, op: { (lhs: Int, rhs: Int) -> Int in (lhs + rjs) + (lhs * rhs) }) == 35
+calc.mathOp(lhs: 5, rhs: 5, op: { (lhs: Int, rhs: Int) -> Int in (lhs + rhs) + (lhs * rhs) }) == 35
     // This style is one way of writing an anonymous function
 calc.mathOp(lhs: 10, rhs: -5, op: { ($0 + $1) + ($0 - $1) }) == 20
     // This is the second, more terse, style; either works
