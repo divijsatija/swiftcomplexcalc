@@ -1,3 +1,5 @@
+import Foundation
+
 print("Welcome back to the UW Calculator")
 
 // Your job is to fill out Calculator so all the expressions
@@ -44,6 +46,36 @@ class Calculator {
             sum += elem
         }
         return sum / args.count
+    }
+    func add(lhs: (a1: Int, a2: Int), rhs: (a1: Int, a2: Int)) -> (sum1: Int, sum2: Int) {
+        return ((lhs.a1 + rhs.a1), (lhs.a2 + rhs.a2))
+    }
+    func subtract(lhs: (a1: Int, a2: Int), rhs: (a1: Int, a2: Int)) -> (sum1: Int, sum2: Int) {
+        return ((lhs.a1 - rhs.a1), (lhs.a2 - rhs.a2))
+    }
+    func add(lhs: [String:Int], rhs: [String:Int]) -> [String:Int] {
+        var res:[String:Int] = [:]
+        for (key, value) in lhs {
+            res[key] = value + rhs[key]!
+        }
+        return res
+    }
+    func subtract(lhs: [String:Int], rhs: [String:Int]) -> [String:Int] {
+        var res:[String:Int] = [:]
+        for (key, value) in lhs {
+            res[key] = value - rhs[key]!
+        }
+        return res
+    }
+    func mathOp(lhs: Int, rhs: Int, op: (Int, Int) -> Int) -> Int {
+       return op(lhs, rhs)
+    }
+    func mathOp(args: [Int], beg: Int, op: (Int, Int) -> Int) -> Int {
+        var res = beg
+        for elem in args {
+            res = op(elem, res)
+        }
+        return res
     }
 }
 
